@@ -1,10 +1,17 @@
+import os
+from dotenv import load_dotenv
+
+# Carregar as variáveis de ambiente .env:
+load_dotenv()
+
+
 # Definir configuração do BD:
 dataBD = {
-    "host": "localhost",
-    "database": "logesquad",
-    "user": "postgres",
-    "password": "dqm50vnc",
-    "port": 5432
+    "host": os.getenv('HOST'),
+    "database": os.getenv('DATABASE'),
+    "user": os.getenv('USER'),
+    "password": os.getenv('PASSWORD'),
+    "port": os.getenv('PORT')
 }
 
 # Definindo conexão com o Banco de Dados:

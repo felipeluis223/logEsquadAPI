@@ -10,10 +10,9 @@ use_manager = UserManager()
 # Definindo rotas:
 @app.route('/')
 def main():
-    return 'Welcome in LOGESQUAD'
+    return 'Welcome in LOGESQUAD-API'
 
-
-# Rotas de usuários do sistema:
+# Rotas de todos os usuários do sistema:
 @app.route('/user/all')
 def get_all_user():
     users_data = use_manager.get_all_user()
@@ -22,6 +21,7 @@ def get_all_user():
     else:
         return 'Nenhum usuário encontrado'
 
+# Rota de um usuário específico pelo CPF:
 @app.route("/user/<cpf>")
 def user(cpf):
     user_by_cpf = use_manager.get_by_cpf(cpf)
@@ -29,6 +29,12 @@ def user(cpf):
         return jsonify(user_by_cpf['data'])
     except:
         return jsonify(user_by_cpf['error'])
+
+# 
+
+
+
+
 
 # Verifica se o script está sendo executado diretamente e roda o servidor:
 if __name__ == '__main__':
